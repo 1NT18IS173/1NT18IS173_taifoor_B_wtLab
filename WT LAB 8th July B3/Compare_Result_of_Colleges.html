@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result of colleges</title>
+    <style>
+        body{
+            background-color: aliceblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p>ENTER MARKS OF STUDENTS BELONGING TO C1</p>
+    <input type="text" id="c1" placeholder="enter marks" width="200px">
+    <br>
+    <p>ENTER MARKS OF STUDENTS BELONGING TO C2</p>
+    <input type="text" id="c2" placeholder="enter marks" width="200px">
+    <br>
+    <br>
+    <button onclick="myfunc()">check</button>
+    <p>Passing marks for each subject is 30</p>
+    <p id="dem"></p>
+    <p id="dem1"></p>
+    <p id="demo"></p>
+    <p id="pass"></p>
+
+
+    <script>
+        var a=[];
+      
+    function myfunc()
+    {
+    var x = document.getElementById("c1").value;
+    var y = document.getElementById("c2").value;
+        
+    var n = x.split(" ");
+    var m = y.split(" ");
+    var c1 = n;
+    var c2 = m;
+    var sum1 = 0;
+    var sum2 = 0;
+    var i;
+    var passnoc1=0;
+    var passnoc2=0;
+    for(i=0;i<c1.length;i++)
+    {
+        if(c1[i]>30)
+        {
+          passnoc1=passnoc1+1;
+        }
+        if(c2[i]>30)
+        {
+           passnoc2=passnoc2+1;
+        }
+        sum1 += c1[i];
+        sum2 += c2[i];
+    }
+    var passc1 = (passnoc1*100)/c1.length;
+    var failc1 = ((c1.length-passnoc1)*100)/c1.length;
+    var passc2 = (passnoc2*100)/c2.length;
+    var failc2 = ((c2.length-passnoc2)*100)/c2.length;
+    var rc1 = "Passing % of C1: "+passc1+"<br>"+"  "+"failure % of C1 : "+failc1;
+    var rc2 = "Passing % of C2: "+passc2+"<br>"+"failure % of C2: "+failc2;
+    document.getElementById("dem").innerHTML= rc1;
+    document.getElementById("dem1").innerHTML=rc2;
+    if(passc1>passc2)
+    {
+        document.getElementById("demo").innerHTML = "C1 has better result on basis of passing percentage";
+    }
+    else if(passc1<passc2)
+    {
+        document.getElementById("demo").innerHTML = "C2 has better result on basis of passing percentage";
+    }
+    else{
+        document.getElementById("demo").innerHTML = "Both college have same result on basis of passing percentage";
+    }
+    if(sum1>sum2)
+    {
+        document.getElementById("pass").innerHTML = "C1 has better result on basis of total marks";
+    }
+    else if(sum1<sum2)
+    {
+        document.getElementById("pass").innerHTML = "C2 has better result on basis of total marks";
+    }
+    else
+    {
+        document.getElementById("pass").innerHTML = "Both the college have same result on basis of total marks";
+    }
+a.push(c1);
+a.push(c2);
+console.log(a)
+}
+
+    </script>
+
+</body>
+</html>
